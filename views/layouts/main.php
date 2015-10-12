@@ -38,6 +38,7 @@ AppAsset::register($this);
         'encodeLabels' => false,
         'items' => [
             ['label' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-home']) . ' ' . Yii::t('app', 'Home'), 'url' => ['/site/index']],
+            ['label' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-user']) . ' ' . Yii::t('app', 'Users'), 'url' => ['/user/index']],
             Yii::$app->user->isGuest ?
                 ['label' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-log-in']) . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :
                 [

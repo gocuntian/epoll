@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\AddressCity;
-use app\models\search\AddressCitySearch;
+use app\models\User;
+use app\models\search\User as UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AddressCityController implements the CRUD actions for AddressCity model.
+ * UserController implements the CRUD actions for User model.
  */
-class AddressCityController extends Controller
+class UserController extends Controller
 {
     public function behaviors()
     {
@@ -27,20 +27,12 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Lists all AddressCity models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-
-        $user = new \app\models\User;
-        $user->setScenario(\app\models\User::SCENARIO_CREATE);
-        $user->user_login = 'admin';
-        $user->email = 'admin@gmail.com';
-        $user->setPassword('admin');
-        $user->save();
-
-        $searchModel = new AddressCitySearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +42,7 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Displays a single AddressCity model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      */
@@ -62,13 +54,13 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Creates a new AddressCity model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AddressCity();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -80,7 +72,7 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Updates an existing AddressCity model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -99,7 +91,7 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Deletes an existing AddressCity model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -112,15 +104,15 @@ class AddressCityController extends Controller
     }
 
     /**
-     * Finds the AddressCity model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return AddressCity the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = AddressCity::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
