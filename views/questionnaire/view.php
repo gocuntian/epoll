@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Yii::t('app', 'Questions') ?>
                     <div class="btn-group pull-right">
                         <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app',
-                                'Create Question'), ['/question/create', 'id_ank' => $model->id_ank],
+                                'Create'), ['/question/create', 'id_ank' => $model->id_ank],
                             ['class' => 'btn btn-xs btn-success']) ?>
                     </div>
                 </div>

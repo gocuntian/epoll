@@ -53,6 +53,11 @@ AppAsset::register($this);
                 'url' => ['/questionnaire'],
             ],
             [
+                'label' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-ok-sign']) . ' ' . Yii::t('app',
+                        'Answers'),
+                'url' => '#',
+            ],
+            [
                 'label' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-globe']) . ' ' . Yii::t('app',
                         'Addresses'),
                 'url' => ['/address-city'],
