@@ -114,6 +114,21 @@ class Question extends ActiveRecord
         }
     }
 
+    public function getIsRandom()
+    {
+        switch($this->isRandom) {
+            case static::IS_RANDOM_FALSE: {
+                return Yii::t('app', 'No');
+            }
+            case static::IS_RANDOM_TRUE: {
+                return Yii::t('app', 'Yes');
+            }
+            default: {
+                return null;
+            }
+        }
+    }
+
     public function getBBPresent()
     {
         switch ($this->bbPresent) {
