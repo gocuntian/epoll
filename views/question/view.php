@@ -14,7 +14,9 @@ $this->params['breadcrumbs'][] = [
     'url' => ['/questionnaire/view', 'id' => $model->questionnaire->id_ank]
 ];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
 <div class="question-view">
 
     <h1><?= Html::encode($this->title) ?></h1>

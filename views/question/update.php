@@ -15,7 +15,9 @@ $this->params['breadcrumbs'][] = [
 ];
 $this->params['breadcrumbs'][] = ['label' => $model->name_ua, 'url' => ['view', 'id' => $model->id_q]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+
 ?>
+
 <div class="question-update">
 
     <h1><?= Html::encode($this->title) ?></h1>

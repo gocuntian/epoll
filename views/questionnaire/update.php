@@ -9,9 +9,11 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Questionnaire',
 ]) . ' ' . $model->name_ua;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Questionnaires'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_ank, 'url' => ['view', 'id' => $model->id_ank]];
+$this->params['breadcrumbs'][] = ['label' => $model->name_ua, 'url' => ['view', 'id' => $model->id_ank]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+
 ?>
+
 <div class="questionnaire-update">
 
     <h1><?= Html::encode($this->title) ?></h1>

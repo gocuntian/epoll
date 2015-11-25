@@ -9,7 +9,9 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Questionnaires');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
 <div class="questionnaire-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
