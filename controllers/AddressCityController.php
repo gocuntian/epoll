@@ -32,14 +32,6 @@ class AddressCityController extends Controller
      */
     public function actionIndex()
     {
-
-        $user = new \app\models\User;
-        $user->setScenario(\app\models\User::SCENARIO_CREATE);
-        $user->user_login = 'admin';
-        $user->email = 'admin@gmail.com';
-        $user->setPassword('admin');
-        $user->save();
-
         $searchModel = new AddressCitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

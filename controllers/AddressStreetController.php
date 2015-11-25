@@ -56,14 +56,24 @@ class AddressStreetController extends Controller
     /**
      * Creates a new AddressStreet model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param integer $owner_id
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($owner_id = null)
     {
         $model = new AddressStreet();
 
+        if ($owner_id !== null) {
+            $model->owner_id = $owner_id;
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->addFlash('success', Yii::t('app', "Street \"{$model->s_name}\" was successfully created."));
+            if ($owner_id !== null) {
+                return $this->redirect(['/address-city/view', 'id' => $owner_id]);
+            } else {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,

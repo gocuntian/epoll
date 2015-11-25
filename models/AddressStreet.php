@@ -18,49 +18,49 @@ use yii\db\ActiveRecord;
  */
 class AddressStreet extends ActiveRecord
 {
-	public static function tableName()
-	{
-		return '{{%adr_street}}';
-	}
+    public static function tableName()
+    {
+        return '{{%adr_street}}';
+    }
 
-	public function rules()
-	{
-		return [
-			[['s_type_id', 'owner_id', 's_name'], 'required'],
-			[['s_type_id', 'owner_id'], 'integer'],
-			[['s_name'], 'string', 'max' => 50]
-		];
-	}
+    public function rules()
+    {
+        return [
+            [['s_type_id', 'owner_id', 's_name'], 'required'],
+            [['s_type_id', 'owner_id'], 'integer'],
+            [['s_name'], 'string', 'max' => 50]
+        ];
+    }
 
-	public function attributeLabels()
-	{
-		return [
-			'id' => Yii::t('app', 'ID'),
-			's_type_id' => Yii::t('app', 'Type'),
-			's_name' => Yii::t('app', 'Name'),
-			'owner_id' => Yii::t('app', 'City'),
-		];
-	}
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            's_type_id' => Yii::t('app', 'Type'),
+            's_name' => Yii::t('app', 'Name'),
+            'owner_id' => Yii::t('app', 'City'),
+        ];
+    }
 
-	public function getAddressStreetType()
-	{
-		return $this->hasOne(AddressStreetType::className(), ['id' => 's_type_id']);
-	}
+    public function getAddressStreetType()
+    {
+        return $this->hasOne(AddressStreetType::className(), ['id' => 's_type_id']);
+    }
 
-	public function getAddressCity()
-	{
-		return $this->hasOne(AddressCity::className(), ['id' => 'owner_id']);
-	}
+    public function getAddressCity()
+    {
+        return $this->hasOne(AddressCity::className(), ['id' => 'owner_id']);
+    }
 
-	/*----------------------------------------------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------------------------------------*/
 
-	public function getSTypeId()
-	{
-		return isset($this->addressStreetType) ? $this->addressStreetType->f_name : null;
-	}
+    public function getSTypeId()
+    {
+        return isset($this->addressStreetType) ? $this->addressStreetType->f_name : null;
+    }
 
-	public function getOwnerId()
-	{
-		return isset($this->addressCity) ? $this->addressCity->c_name : null;
-	}
+    public function getOwnerId()
+    {
+        return isset($this->addressCity) ? $this->addressCity->c_name : null;
+    }
 }

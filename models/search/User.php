@@ -19,7 +19,24 @@ class User extends UserModel
     {
         return [
             [['id', 'hw_id', 'has_car', 'id_role'], 'integer'],
-            [['user_fname', 'user_lname', 'user_mname', 'user_login', 'user_pass', 'date_nar', 'stat', 'dom_addr', 'tel_num', 'email', 'dtFrom', 'dtTo', 'lang'], 'safe'],
+            [
+                [
+                    'user_fname',
+                    'user_lname',
+                    'user_mname',
+                    'user_login',
+                    'user_pass',
+                    'date_nar',
+                    'stat',
+                    'dom_addr',
+                    'tel_num',
+                    'email',
+                    'dtFrom',
+                    'dtTo',
+                    'lang'
+                ],
+                'safe'
+            ],
         ];
     }
 

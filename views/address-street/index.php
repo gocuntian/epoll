@@ -17,11 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="address-street-index">
 
+    <?= $this->render('/common/_address_tabs'); ?>
+
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Street'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app', 'Create Street'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -39,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->getSTypeId();
                 },
             ],
-            'owner_id' =>  [
+            'owner_id' => [
                 'filter' => AddressCity::getAllOwnerIdOptions(),
                 'attribute' => 'owner_id',
                 'value' => function (AddressStreet $data) {

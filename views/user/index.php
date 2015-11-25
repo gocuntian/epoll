@@ -13,47 +13,47 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-	<h1><?= Html::encode($this->title) ?></h1>
-	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-	<p>
-		<?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
-	</p>
+    <p>
+        <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
-	<?= GridView::widget([
-		'dataProvider' => $dataProvider,
-		'filterModel' => $searchModel,
-		'columns' => [
-			['class' => 'yii\grid\SerialColumn'],
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-			'id',
-			'user_login',
-			'email:email',
-			'user_fname',
-			'user_lname',
-			'stat' => [
-				'attribute' => 'stat',
-				'filter' => User::getStatOptions(),
-				'value' => function (User $data) {
-					return $data->getStat();
-				},
-			],
-			'has_car' => [
-				'attribute' => 'has_car',
-				'filter' => User::getHasCarOptions(),
-				'value' => function (User $data) {
-					return $data->getHasCar();
-				},
-			],
-			'dtFrom',
-			'dtTo',
-			'id_role',
+            'id',
+            'user_login',
+            'email:email',
+            'user_fname',
+            'user_lname',
+            'stat' => [
+                'attribute' => 'stat',
+                'filter' => User::getStatOptions(),
+                'value' => function (User $data) {
+                    return $data->getStat();
+                },
+            ],
+            'has_car' => [
+                'attribute' => 'has_car',
+                'filter' => User::getHasCarOptions(),
+                'value' => function (User $data) {
+                    return $data->getHasCar();
+                },
+            ],
+            'dtFrom',
+            'dtTo',
+            'id_role',
 
-			[
-				'class' => 'yii\grid\ActionColumn',
-				'contentOptions' => ['style' => 'width: 100px; text-align: center;']
-			],
-		],
-	]); ?>
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['style' => 'width: 100px; text-align: center;']
+            ],
+        ],
+    ]); ?>
 
 </div>

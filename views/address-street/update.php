@@ -6,13 +6,15 @@ use yii\helpers\Html;
 /* @var $model app\models\AddressStreet */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Street',
-]) . ' ' . $model->id;
+        'modelClass' => 'Street',
+    ]) . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Streets'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="address-street-update">
+
+    <?= $this->render('/common/_address_tabs'); ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 

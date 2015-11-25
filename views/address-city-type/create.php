@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="address-city-type-create">
 
+    <?= $this->render('/common/_address_tabs'); ?>
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
