@@ -30,7 +30,7 @@ class Questionnaire extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_ank' => Yii::t('app', 'Id Ank'),
+            'id_ank' => Yii::t('app', 'ID'),
             'name_ua' => Yii::t('app', 'Name [UA]'),
             'name_ru' => Yii::t('app', 'Name [RU]'),
         ];

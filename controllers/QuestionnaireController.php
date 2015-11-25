@@ -51,6 +51,7 @@ class QuestionnaireController extends Controller
     {
         $questionSearchModel = new QuestionSearch();
         $questionDataProvider = $questionSearchModel->search(['id_ank' => $id]);
+        $questionDataProvider->setPagination(['pagesize' => 8]);
 
         return $this->render('view', [
             'model' => $this->findModel($id),

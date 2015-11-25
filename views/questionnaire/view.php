@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 use yii\grid\GridView;
 use app\models\search\QuestionSearch;
 use app\models\Question;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Questionnaire */
@@ -66,17 +67,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="panel-body">
+                    <?php Pjax::begin(); ?>
                     <?= GridView::widget([
                         'dataProvider' => $questionDataProvider,
-//                        'filterModel' => $questionSearchModel,
                         'layout' => '{items}' . PHP_EOL . '{pager}',
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-//                            'id_q',
-//                            'id_ank',
-//                            'npp',
                             'name_ua',
-//                            'name_ru',
                             'q_type' => [
                                 'format' => 'html',
                                 'attribute' => 'q_type',
@@ -84,9 +81,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return Html::tag('span', $data->getQType(), ['class' => 'label label-primary']);
                                 },
                             ],
-//                            'answ_min',
-//                            'answ_max',
-//                            'isRandom',
                             'bbPresent' => [
                                 'format' => 'html',
                                 'attribute' => 'bbPresent',
@@ -101,7 +95,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return Html::tag('span', $data->getIVPresent(), ['class' => $data->ivPresent ? 'label label-success' : 'label label-danger']);
                                 },
                             ],
-//                            'openQuestionAnswerMaxLength',
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'template' => '{view} {update} {delete}',
@@ -132,6 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                     ]); ?>
+                    <?php Pjax::end(); ?>
                 </div>
             </div>
         </div>
