@@ -68,6 +68,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'style' => 'width: 70px;',
                                 ],
                             ],
+                            'npp' => [
+                                'attribute' => 'npp',
+                                'contentOptions' => [
+                                    'style' => 'width: 100px;',
+                                ],
+                            ],
                             'name_ua',
                             'q_type' => [
                                 'format' => 'html',

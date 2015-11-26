@@ -94,3 +94,20 @@ h1, .h1 {
     font-size: 24px;
     font-weight: bold;
 }
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span,
+.pagination,
+.label,
+.form-control,
+.breadcrumb,
+.nav-tabs > li > a,
+.btn,
+.panel,
+.panel-heading,
+.panel-body,
+.panel-footer {
+    border-radius: 0;
+}

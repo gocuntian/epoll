@@ -46,7 +46,10 @@ class Question extends ActiveRecord
     public function rules()
     {
         return [
-            [['id_ank', 'name_ua', 'name_ru'], 'required'],
+            [
+                ['id_ank', 'name_ua', 'name_ru', 'npp', 'answ_min', 'answ_max', 'openQuestionAnswerMaxLength'],
+                'required'
+            ],
             [
                 [
                     'id_ank',
@@ -61,7 +64,7 @@ class Question extends ActiveRecord
                 ],
                 'integer'
             ],
-            [['name_ua', 'name_ru'], 'string', 'max' => 255]
+            [['name_ua', 'name_ru'], 'string', 'max' => 255],
         ];
     }
 
@@ -70,7 +73,7 @@ class Question extends ActiveRecord
         return [
             'id_q' => Yii::t('app', 'ID'),
             'id_ank' => Yii::t('app', 'Questionnaire'),
-            'npp' => Yii::t('app', 'Npp'),
+            'npp' => Yii::t('app', 'Serial Number'),
             'name_ua' => Yii::t('app', 'Name [UA]'),
             'name_ru' => Yii::t('app', 'Name [RU]'),
             'q_type' => Yii::t('app', 'Type'),
@@ -90,9 +93,12 @@ class Question extends ActiveRecord
 
     public function init()
     {
-        $this->answ_min = 0;
-        $this->answ_max = 0;
-        $this->openQuestionAnswerMaxLength = 0;
+        if ($this->isNewRecord) {
+            $this->npp = 0;
+            $this->answ_min = 1;
+            $this->answ_max = 1;
+            $this->openQuestionAnswerMaxLength = 0;
+        }
         parent::init();
     }
 
@@ -116,7 +122,7 @@ class Question extends ActiveRecord
 
     public function getIsRandom()
     {
-        switch($this->isRandom) {
+        switch ($this->isRandom) {
             case static::IS_RANDOM_FALSE: {
                 return Yii::t('app', 'No');
             }

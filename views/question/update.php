@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'questionAnswerSearchModel' => isset($questionAnswerSearchModel) ? $questionAnswerSearchModel : null,
+        'questionAnswerDataProvider' => isset($questionAnswerDataProvider) ? $questionAnswerDataProvider : null,
+        'questionAnswerModel' => isset($questionAnswerModel) ? $questionAnswerModel : null,
     ]) ?>
 
 </div>

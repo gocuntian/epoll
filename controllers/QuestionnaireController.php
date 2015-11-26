@@ -41,7 +41,8 @@ class QuestionnaireController extends Controller
     public function actionView($id)
     {
         $questionSearchModel = new QuestionSearch();
-        $questionDataProvider = $questionSearchModel->search(['QuestionSearch' => ['id_ank' => $id]]);
+        $questionSearchParams = Yii::$app->request->queryParams + ['QuestionSearch' => ['id_ank' => $id]];
+        $questionDataProvider = $questionSearchModel->search($questionSearchParams);
         $questionDataProvider->setPagination(['pagesize' => 10]);
 
         return $this->render('view', [

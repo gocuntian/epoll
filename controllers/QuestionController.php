@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\QuestionAnswer;
+use app\models\search\QuestionAnswerSearch;
 use Yii;
 use app\models\Question;
 use yii\web\Controller;
@@ -38,7 +40,7 @@ class QuestionController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully created."));
-            return $this->redirect(['/questionnaire/view', 'id' => $model->id_ank]);
+            return $this->redirect(['update', 'id' => $model->id_q]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -50,12 +52,22 @@ class QuestionController extends Controller
     {
         $model = $this->findModel($id);
 
+        if ($model->q_type == $model::Q_TYPE_CLOSE) {
+            $questionAnswerModel = new QuestionAnswer(['id_q' => $id]);
+            $questionAnswerSearchModel = new QuestionAnswerSearch();
+            $questionAnswerParams = Yii::$app->request->queryParams + ['QuestionAnswerSearch' => ['id_q' => $id]];
+            $questionAnswerDataProvider = $questionAnswerSearchModel->search($questionAnswerParams);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully updated."));
             return $this->redirect(['view', 'id' => $model->id_q]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'questionAnswerSearchModel' => isset($questionAnswerSearchModel) ? $questionAnswerSearchModel : null,
+                'questionAnswerDataProvider' => isset($questionAnswerDataProvider) ? $questionAnswerDataProvider : null,
+                'questionAnswerModel' => isset($questionAnswerModel) ? $questionAnswerModel : null,
             ]);
         }
     }
