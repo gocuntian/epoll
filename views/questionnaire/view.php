@@ -19,36 +19,30 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="questionnaire-view">
+    <h1><?= Yii::t('app', 'Questionnaire') . ' ' . Html::encode($this->title) ?></h1>
+
     <div class="row">
-        <div class="col-md-12">
-            <h1><?= Html::encode($this->title) ?></h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <?= Yii::t('app', 'Questionnaire') ?>
-                    <div class="btn-group pull-right">
-                        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-pencil']) . ' ' . Yii::t('app',
-                                'Update'), ['update', 'id' => $model->id_ank],
-                            ['class' => 'btn btn-xs btn-primary']) ?>
-                        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-trash']) . ' ' . Yii::t('app',
-                                'Delete'), ['delete', 'id' => $model->id_ank],
-                            [
-                                'class' => 'btn btn-xs btn-danger',
-                                'data' => [
-                                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                                    'method' => 'post',
-                                ],
-                            ]) ?>
-                    </div>
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-pencil']) . ' ' . Yii::t('app',
+                            'Update'), ['update', 'id' => $model->id_ank],
+                        ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-trash']) . ' ' . Yii::t('app',
+                            'Delete'), ['delete', 'id' => $model->id_ank],
+                        [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                'method' => 'post',
+                            ],
+                        ]) ?>
                 </div>
                 <div class="panel-body">
                     <?= DetailView::widget([
                         'model' => $model,
+                        'template' => '<tr><th width="50%">{label}</th><td width="50%">{value}</td></tr>',
                         'attributes' => [
-                            'id_ank',
                             'name_ua',
                             'name_ru',
                         ],
@@ -56,43 +50,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <?= Yii::t('app', 'Questions') ?>
-                    <div class="btn-group pull-right">
-                        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app',
-                                'Create'), ['/question/create', 'id_ank' => $model->id_ank],
-                            ['class' => 'btn btn-xs btn-success']) ?>
-                    </div>
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app',
+                            'Create Question'), ['/question/create', 'id_ank' => $model->id_ank],
+                        ['class' => 'btn btn-success']) ?>
                 </div>
                 <div class="panel-body">
                     <?php Pjax::begin(); ?>
                     <?= GridView::widget([
                         'dataProvider' => $questionDataProvider,
-                        'layout' => '{items}' . PHP_EOL . '{pager}',
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
+                            [
+                                'class' => 'yii\grid\SerialColumn',
+                                'contentOptions' => [
+                                    'style' => 'width: 70px;',
+                                ],
+                            ],
                             'name_ua',
                             'q_type' => [
                                 'format' => 'html',
                                 'attribute' => 'q_type',
                                 'value' => function (Question $data) {
                                     return Html::tag('span', $data->getQType(), ['class' => 'label label-primary']);
-                                },
-                            ],
-                            'bbPresent' => [
-                                'format' => 'html',
-                                'attribute' => 'bbPresent',
-                                'value' => function (Question $data) {
-                                    return Html::tag('span', $data->getBBPresent(), ['class' => $data->bbPresent ? 'label label-success' : 'label label-danger']);
-                                },
-                            ],
-                            'ivPresent' => [
-                                'format' => 'html',
-                                'attribute' => 'ivPresent',
-                                'value' => function (Question $data) {
-                                    return Html::tag('span', $data->getIVPresent(), ['class' => $data->ivPresent ? 'label label-success' : 'label label-danger']);
                                 },
                             ],
                             [

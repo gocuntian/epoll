@@ -68,7 +68,7 @@ class AddressStreetController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->addFlash('success', Yii::t('app', "Street \"{$model->s_name}\" was successfully created."));
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully created."));
             if ($owner_id !== null) {
                 return $this->redirect(['/address-city/view', 'id' => $owner_id]);
             } else {
@@ -92,6 +92,7 @@ class AddressStreetController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully updated."));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

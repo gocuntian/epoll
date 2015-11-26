@@ -12,36 +12,43 @@ use app\models\Question;
  */
 class QuestionSearch extends Question
 {
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['id_q', 'id_ank', 'npp', 'q_type', 'answ_min', 'answ_max', 'isRandom', 'bbPresent', 'ivPresent', 'openQuestionAnswerMaxLength'], 'integer'],
-            [['name_ua', 'name_ru'], 'safe'],
+            [
+                [
+                    'name_ua',
+                    'name_ru',
+                    'id_ank',
+                    'id_q',
+                    'id_ank',
+                    'npp',
+                    'q_type',
+                    'answ_min',
+                    'answ_max',
+                    'isRandom',
+                    'bbPresent',
+                    'ivPresent',
+                    'openQuestionAnswerMaxLength'
+                ],
+                'safe'
+            ],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
+    public function init()
+    {
+    }
+
     public function search($params)
     {
-        $query = Question::find();
+        $query = QuestionSearch::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

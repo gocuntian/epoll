@@ -13,36 +13,41 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="address-street-view">
-
     <?= $this->render('/common/_address_tabs'); ?>
+    <h1><?= Yii::t('app', 'Street') . ' ' . Html::encode($this->title) ?></h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-pencil']) . ' ' . Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-trash']) . ' ' . Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            's_name',
-            's_type_id' => [
-                'attribute' => 's_type_id',
-                'value' => $model->getSTypeId(),
-            ],
-            'owner_id' => [
-                'attribute' => 'owner_id',
-                'value' => $model->getOwnerId(),
-            ],
-        ],
-    ]) ?>
-
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-pencil']) . ' ' . Yii::t('app',
+                            'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-trash']) . ' ' . Yii::t('app',
+                            'Delete'), ['delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                </div>
+                <div class="panel-body">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            's_name',
+                            's_type_id' => [
+                                'attribute' => 's_type_id',
+                                'value' => $model->getSTypeId(),
+                            ],
+                            'owner_id' => [
+                                'attribute' => 'owner_id',
+                                'value' => $model->getOwnerId(),
+                            ],
+                        ],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

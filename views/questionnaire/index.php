@@ -13,30 +13,31 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="questionnaire-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app', 'Create Questionnaire'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id_ank' => [
-                'attribute' => 'id_ank',
-                'contentOptions' => ['style' => 'width: 100px; text-align: right;']
-            ],
-            'name_ua',
-            'name_ru',
-
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => ['style' => 'width: 100px; text-align: center;']
-            ],
-        ],
-    ]); ?>
-
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app',
+                            'Create Questionnaire'), ['create'], ['class' => 'btn btn-success']) ?>
+                </div>
+                <div class="panel-body">
+                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            'name_ua',
+                            'name_ru',
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => ['style' => 'width: 100px; text-align: center;']
+                            ],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

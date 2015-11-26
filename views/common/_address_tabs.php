@@ -13,44 +13,13 @@ $controllerId = Yii::$app->controller->id;
 ?>
 
 <ul class="nav nav-tabs">
-    <li role="presentation" class="dropdown <?= ($controllerId == 'address-city-type') ? 'active' : '' ?>">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">
-            <?= Yii::t('app', 'City Types') ?> <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' . Yii::t('app', 'Create'), Url::to(['/address-city-type/create'])); ?></li>
-            <li><?= Html::a('<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Show All'), Url::to(['/address-city-type'])); ?></li>
-        </ul>
-    </li>
-    <li role="presentation" class="dropdown <?= ($controllerId == 'address-street-type') ? 'active' : '' ?>">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">
-            <?= Yii::t('app', 'Street Types') ?> <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' . Yii::t('app', 'Create'), Url::to(['/address-street-type/create'])); ?></li>
-            <li><?= Html::a('<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Show All'), Url::to(['/address-street-type'])); ?></li>
-        </ul>
-    </li>
-    <li role="presentation" class="dropdown <?= ($controllerId == 'address-city') ? 'active' : '' ?>">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">
-            <?= Yii::t('app', 'Cities') ?> <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' . Yii::t('app', 'Create new'), Url::to(['/address-city/create'])); ?></li>
-            <li><?= Html::a('<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Show All'), Url::to(['/address-city'])); ?></li>
-        </ul>
-    </li>
-    <li role="presentation" class="dropdown <?= ($controllerId == 'address-street') ? 'active' : '' ?>">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">
-            <?= Yii::t('app', 'Streets') ?> <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' . Yii::t('app', 'Create'), Url::to(['/address-street/create'])); ?></li>
-            <li><?= Html::a('<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Show All'), Url::to(['/address-street'])); ?></li>
-        </ul>
-    </li>
+    <li class="<?= ($controllerId == 'address-city-type') ? 'active' : '' ?>"><?= Html::a(Yii::t('app', 'City Types'),
+            Url::to(['/address-city-type'])); ?></li>
+    <li class="<?= ($controllerId == 'address-street-type') ? 'active' : '' ?>"><?= Html::a(Yii::t('app',
+            'Street Types'),
+            Url::to(['/address-street-type'])); ?></li>
+    <li class="<?= ($controllerId == 'address-city') ? 'active' : '' ?>"><?= Html::a(Yii::t('app', 'Cities'),
+            Url::to(['/address-city'])); ?></li>
+    <li class="<?= ($controllerId == 'address-street') ? 'active' : '' ?>"><?= Html::a(Yii::t('app', 'Streets'),
+            Url::to(['/address-street'])); ?></li>
 </ul>

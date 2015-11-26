@@ -8,10 +8,10 @@ use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Create Question');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Questionnaires'), 'url' => ['/questionnaire']];
-$this->params['breadcrumbs'][] = [
-    'label' => $model->questionnaire->name_ua,
-    'url' => ['/questionnaire/view', 'id' => $model->questionnaire->id_ank]
-];
+//$this->params['breadcrumbs'][] = [
+//    'label' => $model->questionnaire->name_ua,
+//    'url' => ['/questionnaire/view', 'id' => $model->questionnaire->id_ank]
+//];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

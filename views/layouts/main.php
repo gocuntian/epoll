@@ -29,7 +29,7 @@ AppAsset::register($this);
         'brandLabel' => Html::tag('i', null, ['class' => 'glyphicon glyphicon-dashboard']) . ' ' . Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
         'innerContainerOptions' => [
             'class' => 'container-fluid',

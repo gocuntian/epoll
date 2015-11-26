@@ -69,7 +69,7 @@ class Question extends ActiveRecord
     {
         return [
             'id_q' => Yii::t('app', 'ID'),
-            'id_ank' => Yii::t('app', 'Questionnaire ID'),
+            'id_ank' => Yii::t('app', 'Questionnaire'),
             'npp' => Yii::t('app', 'Npp'),
             'name_ua' => Yii::t('app', 'Name [UA]'),
             'name_ru' => Yii::t('app', 'Name [RU]'),

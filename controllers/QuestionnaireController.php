@@ -27,10 +27,6 @@ class QuestionnaireController extends Controller
         ];
     }
 
-    /**
-     * Lists all Questionnaire models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new QuestionnaireSearch();
@@ -42,16 +38,11 @@ class QuestionnaireController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Questionnaire model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         $questionSearchModel = new QuestionSearch();
-        $questionDataProvider = $questionSearchModel->search(['id_ank' => $id]);
-        $questionDataProvider->setPagination(['pagesize' => 8]);
+        $questionDataProvider = $questionSearchModel->search(['QuestionSearch' => ['id_ank' => $id]]);
+        $questionDataProvider->setPagination(['pagesize' => 10]);
 
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -60,16 +51,12 @@ class QuestionnaireController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Questionnaire model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Questionnaire();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully created."));
             return $this->redirect(['view', 'id' => $model->id_ank]);
         } else {
             return $this->render('create', [
@@ -78,17 +65,12 @@ class QuestionnaireController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Questionnaire model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully updated."));
             return $this->redirect(['view', 'id' => $model->id_ank]);
         } else {
             return $this->render('update', [
@@ -97,12 +79,6 @@ class QuestionnaireController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Questionnaire model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

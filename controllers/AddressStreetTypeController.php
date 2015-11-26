@@ -63,6 +63,7 @@ class AddressStreetTypeController extends Controller
         $model = new AddressStreetType();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully created."));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -82,6 +83,7 @@ class AddressStreetTypeController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->addFlash('success', Yii::t('app', "Record was successfully updated."));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

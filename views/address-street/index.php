@@ -16,42 +16,47 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="address-street-index">
-
     <?= $this->render('/common/_address_tabs'); ?>
-
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app', 'Create Street'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <?= Html::a(Html::tag('i', '', ['class' => 'glyphicon glyphicon-plus']) . ' ' . Yii::t('app',
+                            'Create Street'), ['create'], ['class' => 'btn btn-success']) ?>
+                </div>
+                <div class="panel-body">
+                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            'id',
+                            's_name',
+                            's_type_id' => [
+                                'filter' => AddressStreetType::getAddressStreetTypeOptions(),
+                                'attribute' => 's_type_id',
+                                'value' => function (AddressStreet $data) {
+                                    return $data->getSTypeId();
+                                },
+                            ],
+                            'owner_id' => [
+                                'filter' => AddressCity::getAllOwnerIdOptions(),
+                                'attribute' => 'owner_id',
+                                'value' => function (AddressStreet $data) {
+                                    return $data->getOwnerId();
+                                },
+                            ],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id',
-            's_name',
-            's_type_id' => [
-                'filter' => AddressStreetType::getAddressStreetTypeOptions(),
-                'attribute' => 's_type_id',
-                'value' => function (AddressStreet $data) {
-                    return $data->getSTypeId();
-                },
-            ],
-            'owner_id' => [
-                'filter' => AddressCity::getAllOwnerIdOptions(),
-                'attribute' => 'owner_id',
-                'value' => function (AddressStreet $data) {
-                    return $data->getOwnerId();
-                },
-            ],
-
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => ['style' => 'width: 100px; text-align: center;']
-            ],
-        ],
-    ]); ?>
-
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'contentOptions' => ['style' => 'width: 100px; text-align: center;']
+                            ],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
