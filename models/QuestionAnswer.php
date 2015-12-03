@@ -54,7 +54,7 @@ class QuestionAnswer extends ActiveRecord
             'isHidden' => Yii::t('app', 'Is Hidden'),
             'hasText' => Yii::t('app', 'Has Text'),
             'textMaxLength' => Yii::t('app', 'Text Length [max]'),
-            'isNoRandomized' => Yii::t('app', 'Is No Randomized'),
+            'isNoRandomized' => Yii::t('app', 'Is Randomized'),
             'separator' => Yii::t('app', 'Separator'),
             'name_ua' => Yii::t('app', 'Name [UA]'),
             'name_ru' => Yii::t('app', 'Name [RU]'),

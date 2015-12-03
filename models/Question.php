@@ -79,7 +79,7 @@ class Question extends ActiveRecord
             'q_type' => Yii::t('app', 'Type'),
             'answ_min' => Yii::t('app', 'Number of Answers [min]'),
             'answ_max' => Yii::t('app', 'Number of Answers [max]'),
-            'isRandom' => Yii::t('app', 'Is Random'),
+            'isRandom' => Yii::t('app', 'Random'),
             'bbPresent' => Yii::t('app', 'Difficult to Answer Present'),
             'ivPresent' => Yii::t('app', 'Other Answer Present'),
             'openQuestionAnswerMaxLength' => Yii::t('app', 'Open Answer Length [max]'),

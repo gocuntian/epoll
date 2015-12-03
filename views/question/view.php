@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="question-view">
-    <h1><?= Yii::t('app', 'Question') . ' ' . Html::encode($this->title) ?></h1>
+    <h1><?= Yii::t('app', 'Question') . ': ' . Html::encode($this->title) ?></h1>
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'answ_min',
                             'answ_max',
                             'isRandom' => [
-                                'attribute' => 'idRandom',
+                                'attribute' => 'isRandom',
                                 'value' => $model->getIsRandom(),
                             ],
                             'bbPresent' => [
